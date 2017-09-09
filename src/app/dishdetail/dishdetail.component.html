@@ -1,8 +1,51 @@
+<div class="container"
+  fxLayout="row"
+  fxLayout.sm="column"
+  fxLayout.xs="column"
+  fxLayoutAlign.gt-md="space-around center"
+  fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
 
+  <div fxFlex="40">
+    <md-card *ngIf="dish">
+      <md-card-header>
+        <md-card-title>
+          <h3>{{dish.name}}</h3>
+        </md-card-title>
+      </md-card-header>
+      <img md-card-image height="250px" src="{{dish.image}}" alt="{{dish.name}}">
+      <md-card-content>
+        <p>{{dish.description}}</p>
+      </md-card-content>
+      <md-card-actions>
+        <button md-button (click)="goBack()">BACK</button>
+        <button md-button>LIKE</button>
+        <button md-button>SHARE</button>
+      </md-card-actions>
+    </md-card>
+  </div>
+
+  <div fxFlex="40">
+    <md-list *ngIf="dish">
+      <md-list-item *ngFor="let comment of dish.comments">
+        <h3 mdLine> {{comment.author}} </h3>
+        <p mdLine>
+          <span> {{comment.comment}} </span>
+        </p>
+        <p mdLine>
+          <span class="demo-2"> -- {{comment.date}} </span>
+        </p>
+      </md-list-item>
+    </md-list>
+  </div>
+
+</div>
+
+<!-- 
 <div fxFlex *ngIf="dish">
   <md-grid-list cols="2" rowHeight="500px">
     <md-grid-tile>
-      <!-- <div fxFlex *ngIf="dish"> -->
+
         <md-card>
           <md-card-header>
             <md-card-title>
@@ -14,11 +57,12 @@
             <p>{{dish.description}}</p>
           </md-card-content>
           <md-card-actions>
+            <button md-button (click)="goBack()">BACK</button>
             <button md-button>LIKE</button>
             <button md-button>SHARE</button>
           </md-card-actions>
         </md-card>
-      <!-- </div>  -->
+      
     </md-grid-tile>
     <md-grid-tile>
         <md-list>
@@ -34,4 +78,4 @@
         </md-list>
     </md-grid-tile>
   </md-grid-list>
-</div>
+</div> -->
