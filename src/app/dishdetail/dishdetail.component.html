@@ -28,54 +28,15 @@
   <div fxFlex="40">
     <md-list *ngIf="dish">
       <md-list-item *ngFor="let comment of dish.comments">
-        <h3 mdLine> {{comment.author}} </h3>
+        <h3 mdLine> {{comment.comment}} </h3>
         <p mdLine>
-          <span> {{comment.comment}} </span>
+          <span> {{comment.rating}} Stars </span>
         </p>
         <p mdLine>
-          <span class="demo-2"> -- {{comment.date}} </span>
+          <span class="demo-2"> -- {{comment.author}} {{comment.date | date}} </span>
         </p>
       </md-list-item>
     </md-list>
   </div>
 
 </div>
-
-<!-- 
-<div fxFlex *ngIf="dish">
-  <md-grid-list cols="2" rowHeight="500px">
-    <md-grid-tile>
-
-        <md-card>
-          <md-card-header>
-            <md-card-title>
-              <h3>{{dish.name}}</h3>
-            </md-card-title>
-          </md-card-header>
-          <img md-card-image height="250px" src="{{dish.image}}" alt="{{dish.name}}">
-          <md-card-content>
-            <p>{{dish.description}}</p>
-          </md-card-content>
-          <md-card-actions>
-            <button md-button (click)="goBack()">BACK</button>
-            <button md-button>LIKE</button>
-            <button md-button>SHARE</button>
-          </md-card-actions>
-        </md-card>
-      
-    </md-grid-tile>
-    <md-grid-tile>
-        <md-list>
-          <md-list-item *ngFor="let comment of dish.comments">
-            <h3 mdLine> {{comment.author}} </h3>
-            <p mdLine>
-              <span> {{comment.comment}} </span>
-            </p>
-            <p mdLine>
-              <span class="demo-2"> -- {{comment.date}} </span>
-            </p>
-          </md-list-item>
-        </md-list>
-    </md-grid-tile>
-  </md-grid-list>
-</div> -->
