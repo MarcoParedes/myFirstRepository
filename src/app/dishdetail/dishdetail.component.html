@@ -6,7 +6,7 @@
   fxLayoutGap="10px"
   fxLayoutGap.xs="0">
 
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
     <md-card>
       <md-card-header>
         <md-card-title>
@@ -28,7 +28,7 @@
     </md-card>
   </div>
 
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
     <md-list>
       <md-list-item *ngFor="let comment of dish.comments">
         <h3 mdLine> {{comment.comment}} </h3>
@@ -39,6 +39,8 @@
           <span class="demo-2"> -- {{comment.author}} {{comment.date | date}} </span>
         </p>
       </md-list-item>
+    </md-list>
+    <md-list>
       <!-- validate values  to display -->
       <md-list-item *ngIf="commentsForm.valid">
         <h3 mdLine> {{Comment.comment}} </h3>
@@ -49,7 +51,6 @@
           <span class="demo-2"> -- {{Comment.author}} {{Comment.date | date}} </span>
         </p>
       </md-list-item>
-
     </md-list>
   </div>
 
