@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 
@@ -16,35 +16,35 @@ import 'rxjs/add/operator/switchMap';
 })
 export class DishdetailComponent implements OnInit {
 
-  @Input()
   dish:Dish;
   dishIds: number[];
   prev: number;
   next: number;
+  Comment: Comment;
 
- constructor(private dishservice: DishService,
-    private route: ActivatedRoute,
-    private location: Location, private fb: FormBuilder) { 
-      this.createForm();
-    }
-
-    commentsForm: FormGroup;
-    Comment: Comment;
-    formErrors = {
-      'author': '',
-      'comment': ''
-    };
+  commentsForm: FormGroup;
+  formErrors = {
+    'author': '',
+    'comment': ''
+  };
 
     validationMessages = {
     'author': {
-      'required':      'Name is required.',
-      'minlength':     'Name must be at least 2 characters long.',
-      'maxlength':     'Name cannot be more than 25 characters long.'
+      'required':      'Author Name is required.',
+      'minlength':     'Author Name must be at least 2 characters long.'
     },
     'comment': {
       'required':      'Commnet is required.'
     }
   };
+
+  constructor(private dishservice: DishService,
+    private route: ActivatedRoute,
+    private location: Location, 
+    private fb: FormBuilder,
+    @Inject('BaseURL') private BaseURL) { 
+      this.createForm();
+  }
 
   ngOnInit() {
 
